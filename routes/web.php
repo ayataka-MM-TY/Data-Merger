@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $props = [
-        'projects' => [
-            'My Project',
-            'タクシーLog',
-            'プロジェクトX',
-        ],
-    ];
-    return view('upload', $props);
-});
+Route::get('/', [UploadController::class, 'show']);
 
 Route::post('/confirm', function () {
     $props = [
