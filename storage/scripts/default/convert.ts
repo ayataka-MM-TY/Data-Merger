@@ -23,5 +23,4 @@ const json = records.flatMap((record, index) => {
         }
     })
 })
-await Deno.writeTextFile('log', to)
 await Deno.writeTextFile(to, JSON.stringify(json))
