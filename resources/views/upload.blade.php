@@ -18,11 +18,17 @@
         </div>
         <div class="forms-cntainer">
             <div class="forms">
-                <select name="project" required>
-                    <option value="">プロジェクトを選択</option>
-                    <option value="test">テスト</option>
-                </select>
-                <input class="date" type="date" name="example1">
+                <form action="file" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <select name="project" required>
+                        <option value="">プロジェクトを選択</option>
+                        <option value="test">テスト</option>
+                    </select>
+                </form>
+                <form action="file" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input class="date" type="date" name="example1">
+                </form>
             </div>
             <button type="submmit">決定</button>
         </div>
