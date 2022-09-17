@@ -1,0 +1,65 @@
+.uploader {
+  border-radius: 8px;
+  width: 1014px; height: 366px;
+  overflow: hidden;
+  border: dashed 2px #848484;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploader input {
+  /* display: none; */
+  cursor: pointer;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 40px;
+  cursor: pointer;
+  width: 1014px; height: 366px;
+}
+
+select {
+  padding: 10px 36px;
+  border: 1px solid #848484;
+  border-radius: 8px;
+  margin-top: 32px;
+}
+
+.date {
+  padding: 10px 36px;
+  border: 1px solid #848484;
+  border-radius: 8px;
+  margin-top: 32px;
+}
+
+button {
+  padding: 10px 36px;
+  width: 104px;
+  height: 39px;
+  border: 1px solid #848484;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.forms-cntainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.upload-container {
+  width: fit-content;
+  margin: 0 auto;
+}
