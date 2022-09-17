@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Project;
 use Illuminate\View\View;
 
 class UploadController extends Controller
 {
-    public function show(Request $request): View
+    public function show(): View
     {
-        $files = $request->files;
+        $projects = Project::all()->map(fn($project) => $project->name);
         $props = [
-            'projects' => [
-                'My Project',
-                'タクシーLog',
-                'プロジェクトX',
-            ],
+            'projects' => $projects,
         ];
         return view('upload', $props);
     }

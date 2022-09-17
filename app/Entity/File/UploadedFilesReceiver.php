@@ -3,6 +3,7 @@
 namespace App\Entity\File;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Carbon;
 
 class UploadedFilesReceiver
 {
@@ -11,13 +12,15 @@ class UploadedFilesReceiver
     ) {}
 
     /**
-     * @param UploadedFile[] $files
-     * @return void
+     * @param string $projectID UUID
+     * @param UploadedFile[]|UploadedFile $files
+     * @param Carbon|null $date
+     * @return SavedFiles
      */
-    public function receive(array $files): void
+    public function receive(string $projectID, array|UploadedFile $files, ?Carbon $date): SavedFiles
     {
-        foreach ($files as $file) {
-            $this->saver->save($file);
-        }
+        /** @var UploadedFile[] $saveFiles */
+        $saveFiles = is_array($files) ? $files : [$files];
+        return new SavedFiles(array_map(fn ($file) => $this->saver->save($projectID, $file, $date), $saveFiles));
     }
 }

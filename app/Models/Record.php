@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Ramsey\Uuid\Nonstandard\Uuid;
 
 /**
@@ -13,7 +14,7 @@ use Ramsey\Uuid\Nonstandard\Uuid;
  *
  * @property string $id
  * @property string $upload_id
- * @property string $priorityDate
+ * @property Carbon $priorityDate
  * @property int $priorityNumber
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

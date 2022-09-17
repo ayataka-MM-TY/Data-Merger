@@ -9,18 +9,19 @@
     <script type="text/javascript" src="js/upload.js"></script>
 </head>
 <body>
-    <form class="upload-container" action="/confirm" method="post" enctype="multipart/form-data">
+    <form class="upload-container" action="confirm" method="post" enctype="multipart/form-data">
         @csrf
         <div class="uploader">
             <label>
                 <input id="file" type="file" name="file" accept=".xlsx, .xlsm" multiple required>
             </label>
         </div>
-        <div class="forms-cntainer">
+        <div class="forms-container">
             <div class="forms">
                 <select name="project" required>
                     <option value="">プロジェクトを選択</option>
                     <option value="test">テスト</option>
+                    <option value="タクシーLog">タクシーLog</option>
                 </select>
                 <input class="date" type="date" name="date">
             </div>
