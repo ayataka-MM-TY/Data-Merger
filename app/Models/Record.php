@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ramsey\Uuid\Nonstandard\Uuid;
 
 /**
@@ -27,6 +28,8 @@ use Ramsey\Uuid\Nonstandard\Uuid;
  * @method static \Illuminate\Database\Eloquent\Builder|Record whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Record whereUploadId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Value[] $values
+ * @property-read int|null $values_count
  */
 class Record extends Model
 {
@@ -49,5 +52,10 @@ class Record extends Model
     public function upload(): BelongsTo
     {
         return $this->belongsTo(Upload::class);
+    }
+
+    public function values(): HasMany
+    {
+        return $this->hasMany(Value::class);
     }
 }
