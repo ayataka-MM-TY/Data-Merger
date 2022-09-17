@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ramsey\Uuid\Nonstandard\Uuid;
 
 /**
@@ -27,6 +28,8 @@ use Ramsey\Uuid\Nonstandard\Uuid;
  * @method static \Illuminate\Database\Eloquent\Builder|Upload whereProjectId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Upload whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Record[] $records
+ * @property-read int|null $records_count
  */
 class Upload extends Model
 {
@@ -42,8 +45,17 @@ class Upload extends Model
         $this->attributes['id'] = Uuid::uuid4();
     }
 
+    protected $casts = [
+        'date' => 'date',
+    ];
+
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function records(): HasMany
+    {
+        return $this->hasMany(Record::class);
     }
 }
