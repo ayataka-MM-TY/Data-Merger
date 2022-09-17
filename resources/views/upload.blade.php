@@ -9,7 +9,7 @@
     <script type="text/javascript" src="js/upload.js"></script>
 </head>
 <body>
-    <form class="upload-container" action="/confirm" method="post" enctype="multipart/form-data">
+    <form class="upload-container" action="confirm" method="post" enctype="multipart/form-data">
         @csrf
         <div class="uploader">
             <label>
