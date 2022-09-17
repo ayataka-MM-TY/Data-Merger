@@ -9,29 +9,22 @@
     <script type="text/javascript" src="js/upload.js"></script>
 </head>
 <body>
-    <div class="upload-container">
+
+    <form class="upload-container" action="file" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="uploader">
-        <form action="file" method="post" enctype="multipart/form-data">
-            @csrf
             <input id="file" type="file" name="file" accept=".csv" required>
-        </form>
         </div>
         <div class="forms-cntainer">
             <div class="forms">
-                <form action="file" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <select name="project" required>
-                        <option value="">プロジェクトを選択</option>
-                        <option value="test">テスト</option>
-                    </select>
-                </form>
-                <form action="file" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <input class="date" type="date" name="example1">
-                </form>
+                <select name="project" required>
+                    <option value="">プロジェクトを選択</option>
+                    <option value="test">テスト</option>
+                </select>
+                <input class="date" type="date" name="example1">
             </div>
             <button type="submmit">決定</button>
         </div>
-    </div>
+    </form>
 </body>
 </html>
