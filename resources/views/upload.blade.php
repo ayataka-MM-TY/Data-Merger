@@ -11,7 +11,10 @@
 <body>
     <div class="upload-container">
         <div class="uploader">
-            <input type="file" name="file" />
+        <form action="file" method="post" enctype="multipart/form-data">
+            @csrf
+            <input id="file" type="file" name="file" accept=".csv" required>
+        </form>
         </div>
         <div class="forms-cntainer">
             <div class="forms">
@@ -21,7 +24,7 @@
                 </select>
                 <input class="date" type="date" name="example1">
             </div>
-            <button type="button">決定</button>
+            <button type="submmit">決定</button>
         </div>
     </div>
 </body>
