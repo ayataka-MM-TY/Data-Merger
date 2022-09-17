@@ -1,0 +1,41 @@
+.confirm-container {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 36px;
+    border: 1px solid #848484;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    border-bottom: 1px solid #848484;
+    margin: 32px auto 0 auto;
+}
+
+th {
+    background: #F4F4F4;
+    color: #848484;
+    border-bottom: 1px solid #848484;
+    padding: 24px;
+}
+td {
+    border-bottom: 1px solid #848484;
+    padding: 24px;
+}
