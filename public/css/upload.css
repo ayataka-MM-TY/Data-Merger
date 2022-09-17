@@ -31,12 +31,14 @@ select {
   padding: 10px 36px;
   border: 1px solid #848484;
   border-radius: 8px;
+  margin-top: 32px;
 }
 
 .date {
   padding: 10px 36px;
   border: 1px solid #848484;
   border-radius: 8px;
+  margin-top: 32px;
 }
 
 button {
