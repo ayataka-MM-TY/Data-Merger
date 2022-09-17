@@ -27,9 +27,7 @@ class ConfirmController extends Controller
         /** @var UploadedFile|UploadedFile[] $files */
         $files = $request->file('file');
         /** @var Project $project */
-        dump($request->input('project'));
         $project = Project::whereName($request->input('project'))->firstOrFail();
-        dump($project);
         $date = $request->date('date');
         $dateAssign = $request->boolean('date_assign');
 

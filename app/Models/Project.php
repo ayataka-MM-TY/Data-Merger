@@ -55,8 +55,6 @@ class Project extends Model
 
     public function lastUploadDate(): ?Carbon
     {
-        dump($this);
-        dump($this->uploads);
         return $this->uploads->map(fn(Upload $upload) => $upload->created_at)->max();
     }
 }

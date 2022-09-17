@@ -10,7 +10,6 @@ class ExtractedJSONFileConverter implements ExtractedJSONFileConvertable
         $json = json_decode($content);
 
         $records = new JSONConvertedRecords();
-        dump($json);
         foreach ($json as $value) {
             $recordID = $value->recordID;
             $type = $value->type;

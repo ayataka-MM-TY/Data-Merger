@@ -9,7 +9,7 @@ class CommandExtractor implements Extractable
     /**
      * @param string $projectID UUID
      * @param string $from
-     * @param string $toz
+     * @param string $to
      * @param string $originalName
      * @param Carbon|null $date
      * @return ExtractedJSONFile
@@ -23,7 +23,6 @@ class CommandExtractor implements Extractable
     private function execute(string $from, string $to, string $originalName, ?Carbon $date): void
     {
         $dateString = $date?->toDateString() ?? 'null';
-        dump($this->tryDirectories());
         foreach ($this->tryDirectories() as $directory) {
             $directoryPath = self::scriptPath()."/trys/".$directory;
             if ($this->validate($directoryPath, $from, $originalName, $dateString)) {
@@ -31,13 +30,11 @@ class CommandExtractor implements Extractable
                 return;
             }
         }
-        dump("default");
         $this->denoConvert(self::scriptPath()."/default", $from, $to, $originalName, $dateString);
     }
 
     private function denoConvert(string $dirPath, string $from, string $to, string $originalName, string $date): void
     {
-        dump($dirPath."/convert.ts");
         $this->deno($dirPath."/convert.ts", [$from, $to, $originalName, $date]);
     }
 
@@ -69,7 +66,6 @@ class CommandExtractor implements Extractable
             $command .= " $arg";
         }
         $result = [];
-        dump($command);
         exec($command, $result);
         return count($result) === 1 ? $result[0] : null;
     }
@@ -77,6 +73,5 @@ class CommandExtractor implements Extractable
     private static function scriptPath(): string
     {
         return storage_path() . "/scripts";
-//        return "/Users/tanakayouichi/Library/Mobile\ Documents/com\~apple\~CloudDocs/workspace/digital/Data-Merger/storage/scripts";
     }
 }
