@@ -10,11 +10,11 @@
 <body>
     <div class="confirm-container">
         <p>{{ $filename }}を{{ $project }}に保存しますか？</p>
-        <form action="/" method="post" enctype="multipart/form-data">
+        <form action="download" method="post" enctype="multipart/form-data">
             @csrf
             <div class="buttons">
-                <button type="submmit">キャンセル</button>
-                <button type="submmit">保存</button>
+                <button type="submmit" name="save" value="no">キャンセル</button>
+                <button type="submmit" name="save" value="yes">保存</button>
             </div>
         </form>
         <table>

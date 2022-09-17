@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('upload', $props);
 });
 
-Route::post('/confirm', function () {
+Route::get('/confirm', function () {
     $props = [
         'project' => 'My Project',
         'filename' => '2022-04-05.xlsx',
@@ -58,7 +58,7 @@ Route::post('/confirm', function () {
     return view('confirm', $props);
 });
 
-Route::get('/download', function () {
+Route::post('/download', function () {
     $props = [
         'downloads' => [
             [
@@ -78,5 +78,5 @@ Route::get('/download', function () {
             ],
         ]
     ];
-    return view('upload', $props);
+    return view('download', $props);
 });
