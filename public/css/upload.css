@@ -1,0 +1,68 @@
+.uploader {
+  position: relative;
+  border-radius: 8px;
+  width: 1014px; height: 366px;
+  overflow: hidden;
+}
+
+.uploader:before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px; bottom: 24px;
+  left: 24px; right: 24px;
+  border: dashed 2px #848484;
+  font-size: 14px;
+  content: 'ファイルをドロップ';
+  pointer-events: none;
+}
+
+.uploader input {
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+  width: 999px; height: 999px;
+  font-size: 999px;
+  opacity: 0;
+}
+
+select {
+  padding: 10px 36px;
+  border: 1px solid #848484;
+  border-radius: 8px;
+}
+
+.date {
+  padding: 10px 36px;
+  border: 1px solid #848484;
+  border-radius: 8px;
+}
+
+button {
+  padding: 10px 36px;
+  width: 104px;
+  height: 39px;
+  border: 1px solid #848484;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.forms-cntainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.upload-container {
+  width: fit-content;
+  margin: 0 auto;
+}
