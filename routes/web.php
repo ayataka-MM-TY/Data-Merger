@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\DownloadJSONController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,5 @@ Route::post('/confirm', [ConfirmController::class, 'confirm']);
 Route::get('/download', [DownloadController::class, 'show']);
 
 Route::post('/download', [DownloadController::class, 'saveOrCancel']);
+
+Route::get('/json/{projectID}', [DownloadJSONController::class, 'download']);

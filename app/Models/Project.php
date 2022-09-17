@@ -6,8 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Ramsey\Uuid\Nonstandard\Uuid;
-use function Symfony\Component\Translation\t;
 
 /**
  * App\Models\Project
@@ -48,13 +48,16 @@ class Project extends Model
 
     public function recordCount(): int
     {
-        return $this->uploads
-            ->flatMap(fn (Upload $upload) => $upload->records)
-            ->count();
+        return $this->records()->count();
     }
 
     public function lastUploadDate(): ?Carbon
     {
         return $this->uploads->map(fn(Upload $upload) => $upload->created_at)->max();
+    }
+
+    public function records(): Collection
+    {
+        return $this->uploads->flatMap(fn (Upload $upload) => $upload->records);
     }
 }

@@ -49,7 +49,7 @@ class ExtractedJSONFile
         return [
             'project' => $upload->project->name,
             'filename' => $upload->filename,
-            'titles' => $merge->titles(),
+            'titles' => $merge->titleCandidates(),
             'records' => $merge->json(),
         ];
     }

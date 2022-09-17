@@ -4,49 +4,75 @@ namespace App\Entity\Merge;
 
 use App\Models\Record;
 use App\Models\Value;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 class MergeRecords
 {
     public function __construct(
         private readonly Collection $records,
-    ) {
-        $this->records->load('values');
-    }
+    ) {}
 
     public function json(): array {
         return $this->records
             ->map(function (Record $record) {
-                $collection = collect();
-                $collection = $collection->merge([
-                    'priorityDate' => $record->priorityDate,
-                    'priorityNumber' => $record->priorityNumber,
-                ]);
-                foreach ($this->mergeTitles() as $title => $candidates) {
+                $array = [];
+                $array["priorityDate"] = $record->priorityDate->toDateTimeString();
+                $array['priorityNumber'] = $record->priorityNumber;
+                foreach ($this->titleCandidates() as $title => $candidates) {
                     $value = $record->values->first(fn(Value $value) => in_array($value->key, $candidates, true)) ?? '';
-                    $collection = $collection->merge([$title => $value]);
+                    $array[$title] = $value->value;
                 }
-                return $collection->flatten();
+                return $array;
             })
             ->sortBy(['priorityDate', 'priorityNumber'])
             ->all();
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function titles(): array
     {
-        $allKeys = $this->records->flatMap(
-            fn(Record $record) => $record->values->flatMap(
-                fn(Value $value) => $value->key
-            )
-        );
-        $keys = $allKeys->unique();
-        return $keys->toArray();
+        $titles = [];
+        foreach ($this->titleCandidates() as $key => $_) {
+            $titles[] = $key;
+        }
+        return $titles;
     }
 
-    private function mergeTitles(): array
+    public function titleCandidates(): array
+    {
+        $titles = collect([]);
+        foreach ($this->allTitles() as $title) {
+            $titles = $titles->merge(collect($this->asset($title)));
+        }
+        return $titles->all();
+    }
+
+    private function allTitles(): Collection
+    {
+        /** @var string[] $titles */
+        $titles = [];
+        foreach ($this->records as $record) {
+            foreach ($record->values as $value) {
+                $titles[] = $value->key;
+            }
+        }
+        return collect($titles);
+    }
+
+    /**
+     * 対応するキー。なければそのまま返す。
+     * @return array<string, string[]>
+     */
+    private function asset(string $title): array
+    {
+        foreach ($this->mergeTitlesAssets() as $key => $asset) {
+            if (in_array($title, $asset)) return [$key => $asset];
+        }
+        return [$title => [$title]];
+    }
+
+    /** 対応 */
+    private function mergeTitlesAssets(): array
     {
         return [
             '乗車時刻' => [

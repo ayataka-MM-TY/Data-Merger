@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignUuid('upload_id')->constrained();
             $table->dateTime('priorityDate');
             $table->integer('priorityNumber');
-            $table->unique(['priorityDate', 'priorityNumber']);
             $table->timestamps();
         });
     }
