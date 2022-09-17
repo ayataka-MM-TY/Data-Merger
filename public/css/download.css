@@ -1,0 +1,17 @@
+table {
+    text-align: center;
+    border-collapse: collapse;
+    border-bottom: 1px solid #848484;
+    margin: 0 auto;
+}
+
+th {
+    background: #F4F4F4;
+    color: #848484;
+    border-bottom: 1px solid #848484;
+    padding: 24px;
+}
+td {
+    border-bottom: 1px solid #848484;
+    padding: 24px;
+}
