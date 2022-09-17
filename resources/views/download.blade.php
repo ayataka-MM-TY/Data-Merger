@@ -12,9 +12,11 @@
         <tr>
             <th>プロジェクト名</th> <th>データ件数</th> <th>最終更新</th>
         </tr>
+        @foreach($downloads as $download)
         <tr>
-            <td>プロジェクト</td> <td>5件</td> <td>2022/09/17</td>
+            <td>{{ $download['project'] }}</td> <td>{{ $download['count'] }}</td> <td>{{ $download['lastDate'] }}</td>
         </tr>
+        @endforeach
     </table>
 </body>
 </html>
