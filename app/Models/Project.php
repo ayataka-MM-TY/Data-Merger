@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ramsey\Uuid\Nonstandard\Uuid;
 
 /**
@@ -21,6 +22,8 @@ use Ramsey\Uuid\Nonstandard\Uuid;
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Upload[] $uploads
+ * @property-read int|null $uploads_count
  */
 class Project extends Model
 {
@@ -34,5 +37,10 @@ class Project extends Model
         parent::__construct($attributes);
 
         $this->attributes['id'] = Uuid::uuid4();
+    }
+
+    public function uploads(): HasMany
+    {
+        return $this->hasMany(Upload::class);
     }
 }
