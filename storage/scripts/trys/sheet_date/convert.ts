@@ -16,12 +16,12 @@ await (async () => {
     for (const sheetName of sheetNameList) {
         const sheet = workbook.Sheets[sheetName];
         const json = XLSX.utils.sheet_to_json(sheet)
-        const titles = Object.values(json[0]);
-        const sheetDate = parseDate(sheetName);
+        const titles: string[] = Object.values(json[0]);
+        const sheetDate = parseDate(sheetName)!;
 
         let isPriorityDateSearched = false;
-        const types: ('normal' | 'date' | 'priority_date')[] = Object.values(json[1])
-            .map((value: string | number): { type: 'normal' | 'date' | 'priority_date' } => {
+        const types = (Object.values(json[1]) as (string | number)[])
+            .map((value: string | number) => {
                 if (typeof value === "string") return "normal"
                 if (Number.isInteger(value)) return "normal"
                 if (isPriorityDateSearched) return "date"
@@ -35,15 +35,14 @@ await (async () => {
             record.priorityNumber = i;
             for (let j = 0; j < values.length; j++) {
                 if (types[j] === "date" || types[j] === "priority_date") {
-                    const date = convertDate(values[j])
+                    const date = convertDate(values[j] as number)
                     date.setFullYear(sheetDate.getFullYear())
                     date.setMonth(sheetDate.getMonth())
                     date.setDate(sheetDate.getDate());
-                    console.log(date);
                     if (types[j] === "priority_date") {
                         record.priorityDate = date;
                     }
-                    record.append(titles[j], convertDate(values[j]))
+                    record.append(titles[j], convertDate(values[j] as number))
                     continue;
                 }
                 record.append(titles[j], values[j]);

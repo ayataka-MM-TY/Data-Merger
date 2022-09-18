@@ -6,6 +6,8 @@ await validate(async () => {
         return false
     }
     const workbook = await XLSX.readFile("trys/sheet_date/タクシー会社A.xlsx");
+    // const workbook = await XLSX.readFile("trys/sheet_date/タクシー会社B 2022年9月1日.xlsx");
+
     const sheetNameList = workbook.SheetNames
     return !sheetNameList.some((name: string) => parseDate(name) === null);
 })

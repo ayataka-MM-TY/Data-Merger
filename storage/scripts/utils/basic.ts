@@ -82,7 +82,7 @@ export class Value {
     }
 
     private readonly valueToString = (): string => {
-        if (typeof this.value in ['string', 'number', 'boolean']) {
+        if (['string', 'number', 'boolean'].includes(typeof this.value)) {
             return this.value.toString();
         }
         return dateToString(this.value as Date);
