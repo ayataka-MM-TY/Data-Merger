@@ -63,7 +63,7 @@ class CommandExtractor implements Extractable
     {
         $command = "deno run -A " . $scriptPath;
         foreach ($args as $arg) {
-            $command .= " $arg";
+            $command .= " \"$arg\"";
         }
         $result = [];
         exec($command, $result);
