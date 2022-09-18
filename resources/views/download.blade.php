@@ -14,7 +14,9 @@
         </tr>
         @foreach($downloads as $download)
         <tr>
-            <td>{{ $download['project'] }}</td> <td>{{ $download['count'] }}</td> <td>{{ $download['lastDate'] }}</td>
+            <td><a href="/json/77ba89f2-d35d-4cb7-832a-3a4d046cf1b7" download="/json/77ba89f2-d35d-4cb7-832a-3a4d046cf1b7">{{ $download['project'] }}</a></td>
+            <td>{{ $download['count'] }}</td>
+            <td>{{ $download['lastDate'] }}</td>
         </tr>
         @endforeach
     </table>

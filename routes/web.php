@@ -1,5 +1,9 @@
 <?php
 
+// use App\Http\Controllers\ConfirmController;
+// use App\Http\Controllers\DownloadController;
+// use App\Http\Controllers\DownloadJSONController;
+// use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +28,7 @@ Route::get('/', function () {
     return view('upload', $props);
 });
 
-Route::get('/confirm', function () {
+Route::post('/confirm', function () {
     $props = [
         'project' => 'My Project',
         'filename' => '2022-04-05.xlsx',
@@ -58,7 +62,7 @@ Route::get('/confirm', function () {
     return view('confirm', $props);
 });
 
-Route::post('/download', function () {
+Route::get('/download', function () {
     $props = [
         'downloads' => [
             [
@@ -78,5 +82,5 @@ Route::post('/download', function () {
             ],
         ]
     ];
-    return view('download', $props);
+    return view('upload', $props);
 });

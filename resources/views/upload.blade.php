@@ -16,11 +16,12 @@
                 <input id="file" type="file" name="file" accept=".xlsx, .xlsm" multiple required>
             </label>
         </div>
-        <div class="forms-cntainer">
+        <div class="forms-container">
             <div class="forms">
                 <select name="project" required>
                     <option value="">プロジェクトを選択</option>
                     <option value="test">テスト</option>
+                    <option value="タクシーLog">タクシーLog</option>
                 </select>
                 <input class="date" type="date" name="date">
             </div>
