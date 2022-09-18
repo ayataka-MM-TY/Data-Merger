@@ -8,14 +8,6 @@ p {
     justify-content: center;
 }
 
-button {
-    padding: 10px 36px;
-    border: 1px solid #848484;
-    border-radius: 8px;
-    background-color: #fff;
-    cursor: pointer;
-}
-
 .buttons {
     display: flex;
     justify-content: space-between;

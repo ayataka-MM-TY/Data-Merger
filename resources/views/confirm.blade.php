@@ -8,14 +8,40 @@
     <link rel="stylesheet" href="css/confirm.css">
 </head>
 <body>
+    @component("components.header")
+    @endcomponent
     <div class="confirm-container">
         <p>{{ $filename }}を{{ $project }}に保存しますか？</p>
         <form action="download" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" value="yes" name="save">
             <div class="buttons">
-                <button type="submmit">キャンセル</button>
-                <button type="submmit">保存</button>
+                @component("components.button")
+                    @slot("name")
+                        save
+                    @endslot
+                    @slot("value")
+                        no
+                    @endslot
+                    @slot("text")
+                        キャンセル
+                    @endslot
+                    @slot("href")
+                    @endslot
+                @endcomponent
+                @component("components.button")
+                    @slot("name")
+                        save
+                    @endslot
+                    @slot("value")
+                        yes
+                    @endslot
+                    @slot("text")
+                        保存
+                    @endslot
+                @endcomponent
+                <!-- <button id="btn" type="submmit" name="save" value="no">キャンセル</button>
+                <button id="btn" type="submmit" name="save" value="yes">保存</button> -->
             </div>
         </form>
         <table>

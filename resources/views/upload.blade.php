@@ -9,6 +9,8 @@
     <script type="text/javascript" src="js/upload.js"></script>
 </head>
 <body>
+    @component("components.header")
+    @endcomponent
     <form class="upload-container" action="confirm" method="post" enctype="multipart/form-data">
         @csrf
         <div class="uploader">
@@ -25,7 +27,15 @@
                 </select>
                 <input class="date" type="date" name="date">
             </div>
-            <button type="submit">決定</button>
+            @component("components.button")
+                @slot("name")
+                @endslot
+                @slot("value")
+                @endslot
+                @slot("text")
+                    決定
+                @endslot
+            @endcomponent
         </div>
     </form>
 </body>
