@@ -62,6 +62,29 @@ Route::post('/confirm', function () {
     return view('confirm', $props);
 });
 
+Route::post('/download', function () {
+    $props = [
+        'downloads' => [
+            [
+                'project' => 'My Project',
+                'count' => '5件',
+                'lastDate' => '2022/05/05',
+            ],
+            [
+                'project' => 'Your Project',
+                'count' => '105件',
+                'lastDate' => '2022/10/12',
+            ],
+            [
+                'project' => 'His Project',
+                'count' => '21件',
+                'lastDate' => '2022/02/04',
+            ],
+        ]
+    ];
+    return view('download', $props);
+});
+
 Route::get('/download', function () {
     $props = [
         'downloads' => [
@@ -82,5 +105,5 @@ Route::get('/download', function () {
             ],
         ]
     ];
-    return view('upload', $props);
+    return view('download', $props);
 });

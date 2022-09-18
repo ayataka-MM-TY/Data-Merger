@@ -18,19 +18,17 @@
 <div class="header">
     <h1>Data Merger</h1>
     <div class="buttons">
-        @component("components.button")
-            @slot("name")
-            @endslot
-            @slot("value")
+        @component("components.transitionButton")
+            @slot("link")
+                /
             @endslot
             @slot("text")
                 アップロード
             @endslot
         @endcomponent
-        @component("components.button")
-            @slot("name")
-            @endslot
-            @slot("value")
+        @component("components.transitionButton")
+            @slot("link")
+                /download
             @endslot
             @slot("text")
                 ダウンロード
