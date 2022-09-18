@@ -1,4 +1,4 @@
-document.getElementById("btn").addEventListener(
+document.getElementsByTagName("button").addEventListener(
     "submmit",
     function (e) {
         console.log(e.target.value);
