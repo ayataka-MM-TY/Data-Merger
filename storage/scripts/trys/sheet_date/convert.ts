@@ -8,7 +8,7 @@ import {
 await (async () => {
     const args = new ConvertArguments()
 
-    const workbook = await XLSX.readFile("trys/sheet_date/タクシー会社A.xlsx");
+    const workbook = await XLSX.readFile(args.from);
     const sheetNameList = workbook.SheetNames
 
     const records: Record[] = [];

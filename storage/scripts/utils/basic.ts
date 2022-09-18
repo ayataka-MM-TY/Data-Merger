@@ -144,3 +144,11 @@ export const convertDate = (serial: number): Date => {
 
     return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
 }
+
+export function dateMerge(YMD: Date, HMS: Date): Date {
+    const result: Date = HMS;
+    result.setFullYear(YMD.getFullYear());
+    result.setMonth(YMD.getMonth());
+    result.setDate(YMD.getDate());
+    return result;
+}
