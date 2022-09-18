@@ -14,8 +14,8 @@
             @csrf
             <input type="hidden" value="yes" name="save">
             <div class="buttons">
-                <button type="submmit" name="save" value="no">キャンセル</button>
-                <button type="submmit" name="save" value="yes">保存</button>
+                <button id="btn" type="submmit" name="save" value="no">キャンセル</button>
+                <button id="btn" type="submmit" name="save" value="yes">保存</button>
             </div>
         </form>
         <table>
