@@ -8,15 +8,17 @@
     <link rel="stylesheet" href="css/download.css">
 </head>
 <body>
+    @component("components.header")
+    @endcomponent
     <table>
         <tr>
             <th>プロジェクト名</th> <th>データ件数</th> <th>最終更新</th>
         </tr>
         @foreach($downloads as $download)
         <tr>
-            <td><a href="/json/77ba89f2-d35d-4cb7-832a-3a4d046cf1b7" download="/json/77ba89f2-d35d-4cb7-832a-3a4d046cf1b7">{{ $download['project'] }}</a></td>
-            <td>{{ $download['count'] }}</td>
-            <td>{{ $download['lastDate'] }}</td>
+            <td><a href="/json/77ba89f2-d35d-4cb7-832a-3a4d046cf1b7" download="/json/77ba89f2-d35d-4cb7-832a-3a4d046cf1b7">{{ $download["project"] }}</a></td>
+            <td>{{ $download["count"] }}</td>
+            <td>{{ $download["lastDate"] }}</td>
         </tr>
         @endforeach
     </table>

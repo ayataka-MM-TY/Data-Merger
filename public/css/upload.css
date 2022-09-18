@@ -36,16 +36,6 @@ select {
   margin-top: 32px;
 }
 
-button {
-  padding: 10px 36px;
-  width: 104px;
-  height: 39px;
-  border: 1px solid #848484;
-  border-radius: 8px;
-  background-color: #fff;
-  cursor: pointer;
-}
-
 .forms {
   display: flex;
   flex-direction: column;
