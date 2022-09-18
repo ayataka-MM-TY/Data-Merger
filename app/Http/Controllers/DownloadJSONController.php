@@ -20,7 +20,7 @@ class DownloadJSONController extends Controller
 
         $utf8Data = mb_convert_encoding($json, "UTF-8");
         file_put_contents($path, $utf8Data);
-
+        exec("deno fmt $path");
         return response()->file($path);
     }
 }
