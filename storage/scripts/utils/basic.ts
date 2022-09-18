@@ -44,12 +44,12 @@ const dateToString = (date: Date): string => {
 }
 
 type JSONType = 'priority_date'
-              | 'priority_number'
-              | 'string'
-              | 'int'
-              | 'double'
-              | 'date'
-              | 'bool'
+    | 'priority_number'
+    | 'string'
+    | 'int'
+    | 'double'
+    | 'date'
+    | 'bool'
 
 type JSONValue = { id: string, key: string, type: JSONType, value: string }
 
